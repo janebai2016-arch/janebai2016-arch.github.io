@@ -1,6 +1,4 @@
 # main links (top navigation tabs)
 main:
-  - title: "About"
-    url: /
   - title: "Research"
     url: /research/
