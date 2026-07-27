@@ -5,10 +5,16 @@ permalink: /research/
 author_profile: true
 ---
 
-## Current Projects
+## Prescription Drugs
 
-Describe your research projects here.
+- Direct-to-patient program
+- Biosimilars
 
-## Publications
+## Mental Health
 
-- Author, A., **Bai, J.** (2026). Paper title. *Journal Name*.
+- Sleep health
+- Youth mental health
+
+## Consolidation
+
+- ACA Marketplace enrollment
