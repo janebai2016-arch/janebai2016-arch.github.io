@@ -120,7 +120,7 @@ author:
   location         : "Santa Monica, CA"
   email            :
   links:
-    - label: "Email"
+    - label: "jbai@rand.org"
       icon: "fas fa-fw fa-square-envelope"
       url: "mailto:jbai@rand.org"
     - label: "LinkedIn"
