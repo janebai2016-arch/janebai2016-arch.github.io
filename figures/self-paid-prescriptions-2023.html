@@ -30,10 +30,18 @@
     --fills:#3987e5; --dollars:#d95926;
   }
   *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
   body{background:var(--paper);color:var(--ink);font-family:var(--sans);
        font-size:15px;line-height:1.55;margin:0;padding:48px 24px 72px;
        -webkit-font-smoothing:antialiased}
   .wrap{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:38px}
+  a{color:var(--fills);text-decoration:none;border-bottom:1px solid transparent}
+  a:hover{border-bottom-color:currentColor}
+  a:focus-visible{outline:2px solid var(--fills);outline-offset:3px;border-radius:2px}
+  .site-back{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
+             margin-bottom:2px}
+  .site-back a{color:var(--ink-3)}
+  .site-back a:hover{color:var(--fills)}
   header{display:flex;flex-direction:column;gap:11px;padding-bottom:24px;border-bottom:1px solid var(--rule)}
   h1{font-family:var(--serif);font-weight:600;font-size:31px;line-height:1.19;margin:0;
      text-wrap:balance;letter-spacing:-.012em}
@@ -44,131 +52,80 @@
   .fig-head{display:flex;flex-direction:column;gap:3px}
   h2{font-family:var(--serif);font-size:20px;font-weight:600;margin:0;letter-spacing:-.005em}
   .fig-sub{color:var(--ink-2);font-size:13.5px;margin:0}
-  .legend{display:flex;gap:20px;align-items:center;font-size:12.5px;color:var(--ink-2);
-          font-family:var(--sans);margin-top:2px}
+  .legend{display:flex;gap:20px;align-items:center;flex-wrap:wrap;font-size:12.5px;
+          color:var(--ink-2);margin-top:2px}
   .key{display:inline-flex;align-items:center;gap:7px}
-  .dot{width:11px;height:11px;border-radius:50%;flex:0 0 auto}
+  .dot{width:11px;height:11px;border-radius:2px;flex:0 0 auto}
   .plot{position:relative;background:var(--panel);border:1px solid var(--rule);border-radius:3px;
-        padding:18px 16px 8px;overflow-x:auto}
+        padding:18px 14px 8px;overflow-x:auto}
   svg{display:block;width:100%;height:auto;overflow:visible}
   .read{color:var(--ink-2);font-size:13.5px;margin:4px 0 0;max-width:72ch}
   .read b{color:var(--ink);font-weight:600}
+  .read em{font-style:italic}
   text{font-family:var(--sans)}
-  .tick{fill:var(--ink-3);font-size:10.5px;font-family:var(--mono)}
-  .ylab{fill:var(--ink);font-size:12.5px;font-family:var(--mono)}
-  .vlab{font-size:11px;font-weight:600;font-family:var(--mono)}
-  .ratio{fill:var(--ink-2);font-size:11.5px;font-family:var(--mono)}
-  .ratio-h{fill:var(--ink-3);font-size:9.5px;letter-spacing:.08em;font-family:var(--mono)}
+  .tick{fill:var(--ink-3);font-size:10px;font-family:var(--mono)}
+  .yrlab{fill:var(--ink);font-size:13px;font-weight:600;font-family:var(--mono);letter-spacing:.06em}
+  .band{fill:var(--ink);font-size:12.5px;font-family:var(--mono)}
+  .val{fill:var(--ink-2);font-size:10px;font-family:var(--mono)}
   .hit{fill:transparent;cursor:crosshair}
+  .row .hitbg{fill:transparent}
   .row:hover .hitbg{fill:var(--grid)}
   .tip{position:absolute;pointer-events:none;opacity:0;transform:translate(-50%,-100%);
        background:var(--ink);color:var(--paper);font-family:var(--mono);font-size:11.5px;
-       line-height:1.55;padding:8px 10px;border-radius:3px;white-space:nowrap;transition:opacity .1s;z-index:5}
-  .tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:3px;background:var(--panel)}
-  table{border-collapse:collapse;width:100%;font-family:var(--mono);font-size:12.5px;
-        font-variant-numeric:tabular-nums}
-  th,td{padding:8px 12px;text-align:right;border-bottom:1px solid var(--grid);white-space:nowrap}
-  th{color:var(--ink-2);font-weight:600;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
-     border-bottom:1px solid var(--rule)}
-  th:first-child,td:first-child{text-align:left}
-  tbody tr:last-child td{border-bottom:0}
-  tfoot td{font-weight:700;color:var(--ink);border-top:1px solid var(--rule)}
-  .cap{text-align:left;padding:11px 12px;color:var(--ink-2);font-size:10.5px;
-       letter-spacing:.06em;text-transform:uppercase;font-family:var(--mono)}
+       line-height:1.55;padding:8px 10px;border-radius:3px;white-space:nowrap;
+       transition:opacity .1s;z-index:5}
+  section.cmp{display:flex;flex-direction:column;gap:9px;border-top:1px solid var(--rule);padding-top:34px}
+  .caveat{color:var(--ink-3);font-size:12.5px}
   footer{color:var(--ink-3);font-size:12px;border-top:1px solid var(--rule);padding-top:20px;
          display:flex;flex-direction:column;gap:7px}
-  footer .src{color:var(--ink-2);font-family:var(--mono);font-size:11.5px;letter-spacing:.03em}
+  footer .src{color:var(--ink-2);font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;line-height:1.7}
   code{font-family:var(--mono);font-size:11.5px;color:var(--ink-2)}
-
-  html{-webkit-text-size-adjust:100%}
-  a{color:var(--fills);text-decoration:none;border-bottom:1px solid transparent}
-  a:hover{border-bottom-color:currentColor}
-  a:focus-visible{outline:2px solid var(--fills);outline-offset:3px;border-radius:2px}
-  .site-back{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;
-             margin-bottom:2px}
-  .site-back a{color:var(--ink-3)}
-  .site-back a:hover{color:var(--fills)}
-  .cmp{display:flex;flex-direction:column;gap:9px;border-top:1px solid var(--rule);padding-top:34px}
-  .cmp table td:first-child{color:var(--ink);font-family:var(--sans);font-size:13px}
-  .cmp .up{color:var(--dollars)}
-  .cmp .dn{color:var(--fills)}
-  .cmp .mute{color:var(--ink-3)}
-  .caveat{color:var(--ink-3);font-size:12.5px}
-  .read em{font-style:italic}
   @media (max-width:640px){ body{padding:32px 16px 56px} h1{font-size:25px} }
 </style>
 </head>
 <body>
+
 <div class="wrap">
   <nav class="site-back"><a href="/research/">&larr; Research</a></nav>
   <header>
     <h1>Entirely self-paid prescriptions cost Americans <em>$24.0 billion</em> in 2023</h1>
-    <p class="lede">Fills where insurance contributed nothing — no Medicare, Medicaid, private, VA, TRICARE or other third-party dollar. They are 31% of all prescription fills and carry <b>half of every out-of-pocket dollar</b> Americans spend on drugs. But the fills and the dollars sit in opposite places.</p>
+    <p class="lede">Fills where insurance contributed nothing — no Medicare, Medicaid, private, VA, TRICARE or other third-party dollar. They are 31% of all prescription fills and carry <b>half of every out-of-pocket dollar</b> Americans spend on drugs. But the fills and the dollars sit in opposite places, and the gap widened between 2018 and 2023.</p>
   </header>
 
   <figure>
     <div class="fig-head">
       <h2>Where the fills are is not where the money is</h2>
-      <p class="fig-sub">Each band's share of all self-paid fills, against its share of all self-paid dollars. The gap between the two dots is the disproportion.</p>
+      <p class="fig-sub">Each out-of-pocket band's share of all self-paid fills, against its share of all self-paid dollars. Bands run down the middle; 2018 reads outward to the left, 2023 to the right. Both sides share one scale.</p>
     </div>
     <div class="legend">
       <span class="key"><span class="dot" style="background:var(--fills)"></span>Share of self-paid fills</span>
       <span class="key"><span class="dot" style="background:var(--dollars)"></span>Share of self-paid dollars</span>
     </div>
     <div class="plot" id="p1"><div class="tip" id="t1"></div></div>
-    <p class="read">Half of self-paid fills cost under $10 and account for <b>12% of the spending</b>. The 253 fills over $500 — four tenths of one percent, filled by 77 people — account for <b>29.5%</b>. Read down the right column: the disproportion runs from 0.24× at the cheap end to <b>69.6×</b> at the top.</p>
+    <p class="read">In both years the blue bars stack at the top and the orange bars at the bottom — half of self-paid fills cost under $10 and carry about 12% of the spending, while the fills over $500 are under half a percent and carry a fifth to nearly a third. Between the two years the whole distribution shifted down and out: <b>the over-$500 band grew from 18.8% of self-paid dollars to 29.5%</b>, while $68–500 fell from 32.8% to 18.0%.</p>
   </figure>
-
-  <div class="tbl">
-    <table>
-      <caption class="cap">Self-paid fills by out-of-pocket amount</caption>
-      <thead><tr>
-        <th>Out-of-pocket</th><th>Fills</th><th>% of fills</th><th>People</th>
-        <th>Spending $B</th><th>% of spending</th><th>Median fill</th><th>Ratio</th>
-      </tr></thead>
-      <tbody id="tb"></tbody>
-      <tfoot><tr><td>All self-paid</td><td>59,708</td><td>100.0</td><td>8,081</td><td>23.96</td><td>100.0</td><td>10.18</td><td>1.00</td></tr></tfoot>
-    </table>
-  </div>
 
   <section class="cmp">
     <h2>Five years earlier</h2>
-    <p class="fig-sub">The same analysis on MEPS 2018 (HC-206A): 76,873 self-paid fills across 11,141 people.</p>
-    <div class="tbl">
-      <table>
-        <thead><tr><th>&nbsp;</th><th>2018</th><th>2023</th><th>Change</th></tr></thead>
-        <tbody>
-          <tr><td>Self-paid fills</td><td>76,873</td><td>59,708</td><td class="mute">sample shrank</td></tr>
-          <tr><td>People with a self-paid fill</td><td>11,141</td><td>8,081</td><td class="mute">sample shrank</td></tr>
-          <tr><td>Share of all prescription fills</td><td>24.0%</td><td>31.1%</td><td class="up">+7.1 pp</td></tr>
-          <tr><td>Self-paid spending, nominal</td><td>$21.5B</td><td>$24.0B</td><td class="up">+11.5%</td></tr>
-          <tr><td>Self-paid spending, 2023 dollars</td><td>$26.1B</td><td>$24.0B</td><td class="dn">&minus;8.1%</td></tr>
-          <tr><td>Share of all out-of-pocket drug spending</td><td>44.6%</td><td>50.4%</td><td class="up">+5.8 pp</td></tr>
-          <tr><td>Median self-paid fill</td><td>$10.00</td><td>$10.18</td><td class="mute">flat</td></tr>
-          <tr><td>Share of spending in fills over $500</td><td>18.8%</td><td>29.5%</td><td class="up">+10.7 pp</td></tr>
-          <tr><td>Disproportion in the top band</td><td>41.7&times;</td><td>69.6&times;</td><td class="up">+67%</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="read">The nominal rise is an illusion. Consumer prices rose 21.3% over these five years, so 2018's $21.5B is <b>$26.1B in 2023 dollars</b> — meaning real self-paid spending <b>fell about 8%</b>, and total out-of-pocket drug spending fell 19%. What actually grew is the self-paid <em>share</em>: from 45% to 50% of everything patients pay, and from 24% to 31% of fills.</p>
-    <p class="read">The tail also moved. In 2018 the largest block of self-paid dollars sat in the $68–500 band at 32.8%, with fills over $500 accounting for 18.8%. By 2023 that inverted — the over-$500 band carries 29.5% and $68–500 fell to 18.0%. Spending concentrated further into a smaller group of very expensive fills.</p>
+    <p class="read">Self-paid spending rose from <b>$21.5B in 2018 to $24.0B in 2023</b>, and the self-paid share of all prescription fills rose from 24.0% to 31.1% — but the nominal increase is an illusion. Consumer prices rose 21.3% over those five years, so 2018's $21.5B is <b>$26.1B in 2023 dollars</b>, meaning real self-paid spending <em>fell about 8%</em>. Total out-of-pocket drug spending fell 19% in real terms.</p>
+    <p class="read">What actually grew is the share. Self-paid fills went from 45% to <b>50% of everything patients pay out of pocket</b> for drugs, and from 24% to 31% of fills. The median self-paid fill barely moved, $10.00 to $10.18. So Americans are not paying more out of pocket in real terms — a larger slice of what they do pay is simply going through no insurance at all, and it is concentrating in a smaller group of very expensive fills. The top-band disproportion rose from 41.7× to <b>69.6×</b>.</p>
     <p class="read caveat">Treat this as two snapshots, not a trend. MEPS reduced its sample after 2020 — 18,145 people in 2018 against 11,858 in 2023 — so the 2023 tail rests on 253 fills where 2018 had 346. Both are thin, and the intervening years would be needed to establish a trajectory.</p>
   </section>
 
   <footer>
-    <div class="src">MEPS 2023 · Prescribed Medicines file HC-248A · 59,708 fills · 8,081 people<br>MEPS 2018 · Prescribed Medicines file HC-206A · 76,873 fills · 11,141 people</div>
-    <div>Entirely self-paid is defined as <code>RXXP23X &gt; 0</code>, all nine third-party payment sources summing to zero, and <code>RXSF23X = RXXP23X</code>. Spending is weighted by <code>PERWT23F</code>; fill and person counts are unweighted. Ratio is share of spending divided by share of fills.</div>
-    <div>People do not sum to the total — a person with fills in two bands is counted in both. The &gt;$500 band rests on 253 unweighted fills across 77 people and is the most fragile row shown. Inflation adjustment uses annual-average CPI-U (2018 = 251.107, 2023 = 304.702).</div>
+    <div class="src">MEPS 2023 · Prescribed Medicines file HC-248A · 59,708 self-paid fills · 8,081 people<br>MEPS 2018 · Prescribed Medicines file HC-206A · 76,873 self-paid fills · 11,141 people</div>
+    <div>Entirely self-paid is defined as total expenditure above zero, all nine third-party payment sources summing to zero, and self/family payment equal to total expenditure. Spending is weighted by the person weight; fill and person counts are unweighted. Inflation adjustment uses annual-average CPI-U (2018 = 251.107, 2023 = 304.702).</div>
+    <div>A person with fills in more than one band is counted in each. Hover any band for its underlying counts and dollars in both years.</div>
   </footer>
 </div>
 
 <script>
 const D=[
- {b:"$0–10",     f:29534,pers:5856,pf:49.5,dol:2.88,pd:12.0,med:5.59,  r:0.24},
- {b:"$10–25",    f:20807,pers:4649,pf:34.8,dol:5.22,pd:21.8,med:15.00, r:0.62},
- {b:"$25–68",    f: 7291,pers:2241,pf:12.2,dol:4.49,pd:18.7,med:35.00, r:1.53},
- {b:"$68–500",   f: 1823,pers: 761,pf: 3.1,dol:4.31,pd:18.0,med:106.47,r:5.89},
- {b:">$500",     f:  253,pers:  77,pf: 0.4,dol:7.06,pd:29.5,med:904.65,r:69.56}
+ {b:"$0–10",  f18:41733,d18:2.55,pf18:54.3,pd18:11.9, f23:29534,d23:2.88,pf23:49.5,pd23:12.0},
+ {b:"$10–25", f18:21512,d18:3.80,pf18:28.0,pd18:17.7, f23:20807,d23:5.22,pf23:34.8,pd23:21.8},
+ {b:"$25–68", f18: 9420,d18:4.06,pf18:12.3,pd18:18.9, f23: 7291,d23:4.49,pf23:12.2,pd23:18.7},
+ {b:"$68–500",f18: 3862,d18:7.04,pf18: 5.0,pd18:32.8, f23: 1823,d23:4.31,pf23: 3.1,pd23:18.0},
+ {b:">$500",  f18:  346,d18:4.04,pf18: 0.5,pd18:18.8, f23:  253,d23:7.06,pf23: 0.4,pd23:29.5}
 ];
 const NS="http://www.w3.org/2000/svg";
 const el=(n,a)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);return e;};
@@ -176,80 +133,84 @@ const fmt=n=>n.toLocaleString("en-US");
 
 (function(){
   const host=document.getElementById("p1"), tip=document.getElementById("t1");
-  const W=848,mL=96,mR=104,mT=26,mB=36,rowH=52;
-  const H=mT+rowH*D.length+mB, iw=W-mL-mR;
-  const xmax=52, ticks=[0,10,20,30,40,50];
+  const W=848, mT=52, mB=26, rowH=58, half=58;      // half = half-width of the centre hanger column
+  const cx=W/2, cL=cx-half, cR=cx+half, edge=50;
+  const armW=cL-edge;                                // identical on both sides
+  const H=mT+rowH*D.length+mB;
+  const xmax=58, ticks=[0,20,40];
+  const barH=13, gap=5;
+
   const s=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img",
-    "aria-label":"Share of self-paid fills versus share of self-paid dollars, by out-of-pocket band"});
-  const x=v=>mL+(v/xmax)*iw;
+    "aria-label":"Share of self-paid prescription fills and dollars by out-of-pocket band, 2018 versus 2023"});
+  const xL=v=>cL-(v/xmax)*armW, xR=v=>cR+(v/xmax)*armW;
+  const yTop=mT, yBot=mT+rowH*D.length;
   const yc=i=>mT+rowH*i+rowH/2;
 
   ticks.forEach(t=>{
-    s.appendChild(el("line",{x1:x(t),x2:x(t),y1:mT-6,y2:mT+rowH*D.length,
-      stroke:"var(--grid)","stroke-width":1}));
-    const lb=el("text",{x:x(t),y:mT-13,class:"tick","text-anchor":"middle"});
-    lb.textContent=t+"%"; s.appendChild(lb);
+    if(t>0){
+      [xL(t),xR(t)].forEach(x=>{
+        s.appendChild(el("line",{x1:x,x2:x,y1:yTop-6,y2:yBot,stroke:"var(--grid)","stroke-width":1}));
+      });
+      [[xL(t),"L"],[xR(t),"R"]].forEach(([x])=>{
+        const lb=el("text",{x:x,y:yTop-13,class:"tick","text-anchor":"middle"});
+        lb.textContent=t+"%"; s.appendChild(lb);
+      });
+    }
   });
-  s.appendChild(el("line",{x1:x(0),x2:x(0),y1:mT-6,y2:mT+rowH*D.length,
-    stroke:"var(--rule)","stroke-width":1}));
+  [cL,cR].forEach(x=>s.appendChild(el("line",{x1:x,x2:x,y1:yTop-6,y2:yBot,
+    stroke:"var(--rule)","stroke-width":1})));
 
-  const rh=el("text",{x:W-mR+58,y:mT-13,class:"ratio-h","text-anchor":"middle"});
-  rh.textContent="RATIO"; s.appendChild(rh);
+  const y18=el("text",{x:(edge+cL)/2,y:yTop-31,class:"yrlab","text-anchor":"middle"});
+  y18.textContent="2018"; s.appendChild(y18);
+  const y23=el("text",{x:(cR+W-edge)/2,y:yTop-31,class:"yrlab","text-anchor":"middle"});
+  y23.textContent="2023"; s.appendChild(y23);
+
+  function bar(side,v,y,cls){
+    const base=side<0?cL:cR, x=side<0?xL(v):xR(v);
+    const w=Math.abs(base-x), r=Math.min(4,w);
+    if(w<0.6) return el("rect",{x:base-(side<0?0.6:0),y:y,width:0.6,height:barH,fill:cls});
+    return el("path",{fill:cls,d: side<0
+      ? `M${base},${y} L${x+r},${y} Q${x},${y} ${x},${y+r} L${x},${y+barH-r} Q${x},${y+barH} ${x+r},${y+barH} L${base},${y+barH} Z`
+      : `M${base},${y} L${x-r},${y} Q${x},${y} ${x},${y+r} L${x},${y+barH-r} Q${x},${y+barH} ${x-r},${y+barH} L${base},${y+barH} Z`});
+  }
+  function val(side,v,y){
+    const x=(side<0?xL(v):xR(v))+(side<0?-6:6);
+    const t=el("text",{x:x,y:y+barH-3.5,class:"val","text-anchor":side<0?"end":"start"});
+    t.textContent=v.toFixed(1)+"%"; return t;
+  }
 
   D.forEach((d,i)=>{
     const g=el("g",{class:"row"});
-    g.appendChild(el("rect",{class:"hitbg",x:mL-88,y:yc(i)-rowH/2+3,width:W-mL-mR+180,
-      height:rowH-6,rx:3,fill:"transparent"}));
+    g.appendChild(el("rect",{class:"hitbg",x:edge-8,y:yc(i)-rowH/2+3,
+      width:W-2*edge+16,height:rowH-6,rx:3}));
 
-    const yl=el("text",{x:mL-14,y:yc(i)+4.5,class:"ylab","text-anchor":"end"});
-    yl.textContent=d.b; g.appendChild(yl);
+    const yA=yc(i)-barH-gap/2, yB=yc(i)+gap/2;
+    g.appendChild(bar(-1,d.pf18,yA,"var(--fills)"));
+    g.appendChild(bar(-1,d.pd18,yB,"var(--dollars)"));
+    g.appendChild(bar( 1,d.pf23,yA,"var(--fills)"));
+    g.appendChild(bar( 1,d.pd23,yB,"var(--dollars)"));
+    g.appendChild(val(-1,d.pf18,yA)); g.appendChild(val(-1,d.pd18,yB));
+    g.appendChild(val( 1,d.pf23,yA)); g.appendChild(val( 1,d.pd23,yB));
 
-    const x1=x(Math.min(d.pf,d.pd)), x2=x(Math.max(d.pf,d.pd));
-    g.appendChild(el("line",{x1:x1,x2:x2,y1:yc(i),y2:yc(i),stroke:"var(--ink-3)",
-      "stroke-width":2,"stroke-dasharray":"2 4","stroke-linecap":"round"}));
+    const bl=el("text",{x:cx,y:yc(i)+4.5,class:"band","text-anchor":"middle"});
+    bl.textContent=d.b; g.appendChild(bl);
 
-    g.appendChild(el("circle",{cx:x(d.pf),cy:yc(i),r:5.5,fill:"var(--fills)",
-      stroke:"var(--panel)","stroke-width":2}));
-    g.appendChild(el("circle",{cx:x(d.pd),cy:yc(i),r:5.5,fill:"var(--dollars)",
-      stroke:"var(--panel)","stroke-width":2}));
-
-    const lo=d.pf<d.pd, gap=Math.abs(x(d.pf)-x(d.pd));
-    const off=gap<44?15:11;
-    // a dot sitting near the axis would push its label into the band label — flip it inward
-    const tight=46;
-    const fOut=lo?(x(d.pf)-mL<tight?1:-1):1;
-    const dOut=lo?1:(x(d.pd)-mL<tight?1:-1);
-    const lf=el("text",{x:x(d.pf)+fOut*off,y:yc(i)+4,class:"vlab",
-      fill:"var(--fills)","text-anchor":fOut>0?"start":"end"});
-    lf.textContent=d.pf.toFixed(1)+"%"; g.appendChild(lf);
-    const ld=el("text",{x:x(d.pd)+(lo?off:dOut*off),y:yc(i)+4,class:"vlab",
-      fill:"var(--dollars)","text-anchor":lo?"start":(dOut>0?"start":"end")});
-    ld.textContent=d.pd.toFixed(1)+"%"; g.appendChild(ld);
-
-    const rt=el("text",{x:W-mR+58,y:yc(i)+4.5,class:"ratio","text-anchor":"middle"});
-    rt.textContent=(d.r<10?d.r.toFixed(2):d.r.toFixed(1))+"×"; g.appendChild(rt);
-
-    const hit=el("rect",{class:"hit",x:mL-88,y:yc(i)-rowH/2,width:W-mL-mR+180,height:rowH});
+    const hit=el("rect",{class:"hit",x:edge-8,y:yc(i)-rowH/2,width:W-2*edge+16,height:rowH});
     hit.addEventListener("pointerenter",()=>{
-      tip.innerHTML=`<b>${d.b}</b> out of pocket<br>`+
-        `${fmt(d.f)} fills · ${fmt(d.pers)} people<br>`+
-        `${d.pf.toFixed(1)}% of self-paid fills<br>`+
-        `$${d.dol.toFixed(2)}B · ${d.pd.toFixed(1)}% of spending<br>`+
-        `median fill $${d.med.toFixed(2)} · ratio ${d.r}×`;
+      tip.innerHTML=`<b>${d.b}</b> out of pocket`+
+        `<br>2018 &nbsp;${fmt(d.f18)} fills · $${d.d18.toFixed(2)}B`+
+        `<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${d.pf18}% of fills · ${d.pd18}% of dollars`+
+        `<br>2023 &nbsp;${fmt(d.f23)} fills · $${d.d23.toFixed(2)}B`+
+        `<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${d.pf23}% of fills · ${d.pd23}% of dollars`;
       tip.style.opacity=1;
-      tip.style.left=(((x(d.pf)+x(d.pd))/2)/W*100)+"%";
-      tip.style.top=((yc(i)-16)/H*100)+"%";
+      tip.style.left="50%";
+      tip.style.top=((yc(i)-22)/H*100)+"%";
     });
     hit.addEventListener("pointerleave",()=>tip.style.opacity=0);
     g.appendChild(hit);
     s.appendChild(g);
   });
   host.appendChild(s);
-
-  document.getElementById("tb").innerHTML=D.map(d=>
-   `<tr><td>${d.b}</td><td>${fmt(d.f)}</td><td>${d.pf.toFixed(1)}</td><td>${fmt(d.pers)}</td>`+
-   `<td>${d.dol.toFixed(2)}</td><td>${d.pd.toFixed(1)}</td><td>${d.med.toFixed(2)}</td>`+
-   `<td>${d.r<10?d.r.toFixed(2):d.r.toFixed(1)}</td></tr>`).join("");
 })();
 </script>
 
