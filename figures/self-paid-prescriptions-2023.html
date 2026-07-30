@@ -88,10 +88,13 @@
              margin-bottom:2px}
   .site-back a{color:var(--ink-3)}
   .site-back a:hover{color:var(--fills)}
-  .yr-nav{display:flex;gap:14px;align-items:center;font-family:var(--mono);font-size:11.5px;
-          letter-spacing:.05em;color:var(--ink-3);border-top:1px solid var(--rule);padding-top:18px}
-  .yr-nav a{color:var(--fills)}
-  .yr-nav .now{color:var(--ink);border-bottom:1px solid var(--rule)}
+  .cmp{display:flex;flex-direction:column;gap:9px;border-top:1px solid var(--rule);padding-top:34px}
+  .cmp table td:first-child{color:var(--ink);font-family:var(--sans);font-size:13px}
+  .cmp .up{color:var(--dollars)}
+  .cmp .dn{color:var(--fills)}
+  .cmp .mute{color:var(--ink-3)}
+  .caveat{color:var(--ink-3);font-size:12.5px}
+  .read em{font-style:italic}
   @media (max-width:640px){ body{padding:32px 16px 56px} h1{font-size:25px} }
 </style>
 </head>
@@ -128,12 +131,34 @@
     </table>
   </div>
 
-  <div class="yr-nav"><span class="now">2023</span><a href="/figures/self-paid-prescriptions-2018.html">Same analysis for 2018</a></div>
+  <section class="cmp">
+    <h2>Five years earlier</h2>
+    <p class="fig-sub">The same analysis on MEPS 2018 (HC-206A): 76,873 self-paid fills across 11,141 people.</p>
+    <div class="tbl">
+      <table>
+        <thead><tr><th>&nbsp;</th><th>2018</th><th>2023</th><th>Change</th></tr></thead>
+        <tbody>
+          <tr><td>Self-paid fills</td><td>76,873</td><td>59,708</td><td class="mute">sample shrank</td></tr>
+          <tr><td>People with a self-paid fill</td><td>11,141</td><td>8,081</td><td class="mute">sample shrank</td></tr>
+          <tr><td>Share of all prescription fills</td><td>24.0%</td><td>31.1%</td><td class="up">+7.1 pp</td></tr>
+          <tr><td>Self-paid spending, nominal</td><td>$21.5B</td><td>$24.0B</td><td class="up">+11.5%</td></tr>
+          <tr><td>Self-paid spending, 2023 dollars</td><td>$26.1B</td><td>$24.0B</td><td class="dn">&minus;8.1%</td></tr>
+          <tr><td>Share of all out-of-pocket drug spending</td><td>44.6%</td><td>50.4%</td><td class="up">+5.8 pp</td></tr>
+          <tr><td>Median self-paid fill</td><td>$10.00</td><td>$10.18</td><td class="mute">flat</td></tr>
+          <tr><td>Share of spending in fills over $500</td><td>18.8%</td><td>29.5%</td><td class="up">+10.7 pp</td></tr>
+          <tr><td>Disproportion in the top band</td><td>41.7&times;</td><td>69.6&times;</td><td class="up">+67%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="read">The nominal rise is an illusion. Consumer prices rose 21.3% over these five years, so 2018's $21.5B is <b>$26.1B in 2023 dollars</b> — meaning real self-paid spending <b>fell about 8%</b>, and total out-of-pocket drug spending fell 19%. What actually grew is the self-paid <em>share</em>: from 45% to 50% of everything patients pay, and from 24% to 31% of fills.</p>
+    <p class="read">The tail also moved. In 2018 the largest block of self-paid dollars sat in the $68–500 band at 32.8%, with fills over $500 accounting for 18.8%. By 2023 that inverted — the over-$500 band carries 29.5% and $68–500 fell to 18.0%. Spending concentrated further into a smaller group of very expensive fills.</p>
+    <p class="read caveat">Treat this as two snapshots, not a trend. MEPS reduced its sample after 2020 — 18,145 people in 2018 against 11,858 in 2023 — so the 2023 tail rests on 253 fills where 2018 had 346. Both are thin, and the intervening years would be needed to establish a trajectory.</p>
+  </section>
 
   <footer>
-    <div class="src">MEPS 2023 · Prescribed Medicines file HC-248A · 59,708 fills · 8,081 people</div>
+    <div class="src">MEPS 2023 · Prescribed Medicines file HC-248A · 59,708 fills · 8,081 people<br>MEPS 2018 · Prescribed Medicines file HC-206A · 76,873 fills · 11,141 people</div>
     <div>Entirely self-paid is defined as <code>RXXP23X &gt; 0</code>, all nine third-party payment sources summing to zero, and <code>RXSF23X = RXXP23X</code>. Spending is weighted by <code>PERWT23F</code>; fill and person counts are unweighted. Ratio is share of spending divided by share of fills.</div>
-    <div>People do not sum to the total — a person with fills in two bands is counted in both. The &gt;$500 band rests on 253 unweighted fills across 77 people and is the most fragile row shown.</div>
+    <div>People do not sum to the total — a person with fills in two bands is counted in both. The &gt;$500 band rests on 253 unweighted fills across 77 people and is the most fragile row shown. Inflation adjustment uses annual-average CPI-U (2018 = 251.107, 2023 = 304.702).</div>
   </footer>
 </div>
 
